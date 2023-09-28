@@ -8,4 +8,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(GC.PLAYER): 
-		$Label.text = "vel: " + str( floor((GC.PLAYER as RigidBody2D).linear_velocity.x/10)*10 )
+		$Label.text = "vel: " + str( floor(GC.LEVEL.speed) )
