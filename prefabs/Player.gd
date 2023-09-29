@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
 var jumpingTime = 1
-var jumpBase = 1000
+export var jumpBase = 1000
+export var jumpMult = 1.4
 var jumpPower
-var gravity = 40
+export var gravity = 40
 var velocity = Vector2()
-var moveBase = 200
+export var moveBase = 200
 var last_min_y = 300
 
 func _ready():
@@ -22,7 +23,7 @@ func _process(delta):
 	check_dead()
 
 func check_jump():
-	if Input.is_action_pressed("jump"): jumpPower = jumpBase*1.4
+	if Input.is_action_pressed("jump"): jumpPower = jumpBase*jumpMult
 	else: jumpPower = jumpBase
 	if is_on_floor(): 
 		last_min_y = position.y
