@@ -13,7 +13,7 @@ margin_bottom = 611.0
 [node name="AdaptativePlatform" parent="." instance=ExtResource( 3 )]
 margin_left = 69.0
 margin_top = 510.0
-margin_right = 458.0
+margin_right = 569.0
 margin_bottom = 561.0
 
 [node name="AdaptativePlatform2" parent="." instance=ExtResource( 3 )]
