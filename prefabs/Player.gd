@@ -1,30 +1,38 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-var maxSpeedX = 400
-var maxSpeedY = 1200
-var enabledJump = true
-var jumpPower = 500
-var jumping
+var jumpingTime = 1
+var jumpBase = 1000
+var jumpPower
+var gravity = 40
+var velocity = Vector2()
+var moveBase = 200
+var last_min_y = 300
 
 func _ready():
 	GC.PLAYER = self
 
-func _physics_process(delta):
-	if linear_velocity.x>=0 && linear_velocity.x<maxSpeedX: apply_impulse(Vector2.ZERO, Vector2(10,0))
-	if linear_velocity.x<0 && linear_velocity.x>-maxSpeedX: apply_impulse(Vector2.ZERO, Vector2(-10,0))
-	check_jump()
-	$Sprite.rotation_degrees += linear_velocity.x/60
+func _process(delta): 
+	velocity.y += gravity
+	if Input.is_action_pressed("right"): position.x += moveBase*delta
+	elif Input.is_action_pressed("left"): position.x -= moveBase*delta
+	velocity.x *= 0.95
+	velocity = move_and_slide(velocity,Vector2.UP)
 
-func _process(delta): pass
+	check_jump()
+	check_dead()
 
 func check_jump():
-	if enabledJump && Input.is_action_pressed("jump") && self.test_motion(Vector2(0, 1), false):
-		enabledJump = false
-		jumping = true
-		linear_velocity.y = 0 
-		apply_impulse(Vector2.ZERO, Vector2(0,-jumpPower))
-		print("IMPULSE! y:",str(linear_velocity.y))
-		$Tween.interpolate_property($Sprite,"modulate",Color(.3,.3,.3,1),Color(1,1,1,1),.2)
-		$Tween.start()
-		yield(get_tree().create_timer(.2),"timeout")
-		enabledJump = true
+	if Input.is_action_pressed("jump"): jumpPower = jumpBase*1.4
+	else: jumpPower = jumpBase
+	if is_on_floor(): 
+		last_min_y = position.y
+		velocity.y -= jumpPower
+		$AnimationPlayer.seek(0)
+		$AnimationPlayer.play("jump")
+
+func check_dead():
+	if(position.y>1200): 
+		get_tree().paused = true
+		yield(get_tree().create_timer(1),"timeout")
+		get_tree().reload_current_scene()
+		get_tree().paused = false

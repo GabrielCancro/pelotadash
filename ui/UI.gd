@@ -9,3 +9,4 @@ func _ready():
 func _process(delta):
 	if(GC.PLAYER): 
 		$Label.text = "vel: " + str( floor(GC.LEVEL.speed) )
+	$Label2.text = "Bloques: "+str(GC.LEVEL.instanced_blocks.size())
