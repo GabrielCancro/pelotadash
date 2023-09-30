@@ -13,7 +13,7 @@ margin_bottom = 611.0
 [node name="AdaptativePlatform" parent="." instance=ExtResource( 3 )]
 margin_left = 69.0
 margin_top = 510.0
-margin_right = 569.0
+margin_right = 642.0
 margin_bottom = 561.0
 
 [node name="AdaptativePlatform2" parent="." instance=ExtResource( 3 )]
@@ -27,6 +27,24 @@ margin_left = 1367.0
 margin_top = 393.0
 margin_right = 1756.0
 margin_bottom = 444.0
+
+[node name="AdaptativePlatform6" parent="." instance=ExtResource( 3 )]
+margin_left = 1867.0
+margin_top = 229.0
+margin_right = 2256.0
+margin_bottom = 280.0
+
+[node name="AdaptativePlatform7" parent="." instance=ExtResource( 3 )]
+margin_left = 2316.0
+margin_top = 69.0
+margin_right = 2705.0
+margin_bottom = 120.0
+
+[node name="AdaptativePlatform8" parent="." instance=ExtResource( 3 )]
+margin_left = 2711.0
+margin_top = -71.0
+margin_right = 3100.0
+margin_bottom = -20.0
 
 [node name="AdaptativePlatform4" parent="." instance=ExtResource( 3 )]
 margin_left = 1939.0

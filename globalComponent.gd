@@ -2,6 +2,8 @@ extends Node
 
 var PLAYER
 var LEVEL
+var CAMERA
+onready var GAME_SIZE = get_viewport().get_visible_rect().size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

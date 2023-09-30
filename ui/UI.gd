@@ -7,6 +7,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if(GC.PLAYER): 
-		$Label.text = "vel: " + str( floor(GC.LEVEL.speed) )
-	$Label2.text = "Bloques: "+str(GC.LEVEL.instanced_blocks.size())
+	if(GC.PLAYER): $lb_vel.text = "vel: " + str( floor(GC.LEVEL.speed) )
+	if(GC.PLAYER): $lb_posy.text = "posY: " + str( floor(GC.PLAYER.position.y) )
+	$lb_blocks.text = "Bloques: "+str(GC.LEVEL.instanced_blocks.size())

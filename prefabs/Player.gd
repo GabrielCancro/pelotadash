@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var jumpingTime = 1
-export var jumpBase = 1000
-export var jumpMult = 1.4
+export var jumpBase = 700
+export var jumpMult = 1.5
 var jumpPower
 export var gravity = 40
 var velocity = Vector2()

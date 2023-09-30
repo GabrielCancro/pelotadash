@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Camera2D.position.y = GC.PLAYER.position.y - (GC.PLAYER.position.y - GC.PLAYER.last_min_y) / 2 -20
+	pass
