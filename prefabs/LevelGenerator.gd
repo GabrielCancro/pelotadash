@@ -2,10 +2,14 @@ extends Node2D
 
 var speed = 30
 
-var randomBlocks = false
+var randomBlocks = true
 var block_scenes = [
 	preload("res://blocks/block000.tscn"),
 	preload("res://blocks/block001.tscn"),
+	preload("res://blocks/block002.tscn"),
+	preload("res://blocks/block003.tscn"),
+	preload("res://blocks/block004.tscn"),
+	preload("res://blocks/block005.tscn"),
 ]
 var instanced_blocks = []
 var next_block_index = 0
