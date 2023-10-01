@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://blocks/blocks.gd" type="Script" id=1]
+[ext_resource path="res://levelObjects/Platform.tscn" type="PackedScene" id=2]
+
+[node name="Block001" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sizer" type="Control" parent="."]
+margin_right = 4003.0
+margin_bottom = 919.0
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 250, 495 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 802, 496 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 802, 395 )
+rotation = 1.5708
+scale = Vector2( 4, 1 )
+
+[node name="Platform11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1371, 405 )
+rotation = 1.5708
+scale = Vector2( 4, 1 )
+
+[node name="Platform12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2243, 350 )
+rotation = 1.5708
+scale = Vector2( 4, 1 )
+
+[node name="Platform13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2767, 698 )
+rotation = 1.5708
+scale = Vector2( 4, 1 )
+
+[node name="Platform3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1344, 502 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1818, 618 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2277, 809 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2322, 445 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2852, 807 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3375, 689 )
+scale = Vector2( 7, 1 )
+
+[node name="Platform8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3903, 570 )
+scale = Vector2( 7, 1 )
