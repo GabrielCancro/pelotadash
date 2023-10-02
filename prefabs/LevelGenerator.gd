@@ -36,7 +36,9 @@ func add_new_block(_x):
 	instanced_blocks.append(block)
 	add_child(block)
 	if randomBlocks: 
-		next_block_index = rand_range(0,block_scenes.size()-1)
+		var new_index = rand_range(0,block_scenes.size()-1)
+		if new_index==next_block_index: new_index = rand_range(0,block_scenes.size()-1)
+		next_block_index = new_index
 	else:
 		next_block_index += 1
 		if next_block_index >= block_scenes.size(): next_block_index = 0

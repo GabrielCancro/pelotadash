@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="Sizer" type="Control" parent="."]
-margin_right = 2857.0
+margin_right = 1165.0
 margin_bottom = 611.0
 
 [node name="AdaptativePlatform" parent="." instance=ExtResource( 3 )]
@@ -21,39 +21,3 @@ margin_left = 703.0
 margin_top = 512.0
 margin_right = 1092.0
 margin_bottom = 563.0
-
-[node name="AdaptativePlatform3" parent="." instance=ExtResource( 3 )]
-margin_left = 1367.0
-margin_top = 393.0
-margin_right = 1756.0
-margin_bottom = 444.0
-
-[node name="AdaptativePlatform6" parent="." instance=ExtResource( 3 )]
-margin_left = 1867.0
-margin_top = 229.0
-margin_right = 2256.0
-margin_bottom = 280.0
-
-[node name="AdaptativePlatform7" parent="." instance=ExtResource( 3 )]
-margin_left = 2316.0
-margin_top = 69.0
-margin_right = 2705.0
-margin_bottom = 120.0
-
-[node name="AdaptativePlatform8" parent="." instance=ExtResource( 3 )]
-margin_left = 2711.0
-margin_top = -71.0
-margin_right = 3100.0
-margin_bottom = -20.0
-
-[node name="AdaptativePlatform4" parent="." instance=ExtResource( 3 )]
-margin_left = 1939.0
-margin_top = 517.0
-margin_right = 2328.0
-margin_bottom = 568.0
-
-[node name="AdaptativePlatform5" parent="." instance=ExtResource( 3 )]
-margin_left = 2398.0
-margin_top = 376.0
-margin_right = 2787.0
-margin_bottom = 427.0
