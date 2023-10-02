@@ -33,8 +33,7 @@ scale = Vector2( 7, 1 )
 
 [node name="Platform9" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2287, 385 )
-rotation = 1.5708
-scale = Vector2( 7, 1 )
+scale = Vector2( 1, 7 )
 
 [node name="Platform6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2807, 676 )

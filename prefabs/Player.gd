@@ -33,7 +33,4 @@ func check_jump():
 
 func check_dead():
 	if(position.y>1200): 
-		get_tree().paused = true
-		yield(get_tree().create_timer(1),"timeout")
-		get_tree().reload_current_scene()
-		get_tree().paused = false
+		GC.end_game()

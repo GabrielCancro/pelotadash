@@ -1,23 +1,19 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://levelObjects/Platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://blocks/blocks.gd" type="Script" id=2]
-[ext_resource path="res://levelObjects/AdaptativePlatform.tscn" type="PackedScene" id=3]
 
 [node name="Block000" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sizer" type="Control" parent="."]
-margin_right = 1165.0
+margin_right = 1230.0
 margin_bottom = 611.0
 
-[node name="AdaptativePlatform" parent="." instance=ExtResource( 3 )]
-margin_left = 69.0
-margin_top = 510.0
-margin_right = 642.0
-margin_bottom = 561.0
+[node name="Platform" parent="." instance=ExtResource( 1 )]
+position = Vector2( 361, 530 )
+scale = Vector2( 8.2, 1 )
 
-[node name="AdaptativePlatform2" parent="." instance=ExtResource( 3 )]
-margin_left = 703.0
-margin_top = 512.0
-margin_right = 1092.0
-margin_bottom = 563.0
+[node name="Platform2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 955, 530 )
+scale = Vector2( 8.2, 1 )
