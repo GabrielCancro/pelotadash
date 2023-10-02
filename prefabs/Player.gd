@@ -10,7 +10,8 @@ export var moveBase = 200
 var last_min_y = 300
 
 func _ready():
-	GC.PLAYER = self
+	pass
+#	GC.PLAYER = self
 
 func _process(delta): 
 	velocity.y += gravity
@@ -27,7 +28,7 @@ func check_jump():
 	else: jumpPower = jumpBase
 	if is_on_floor(): 
 		last_min_y = position.y
-		velocity.y -= jumpPower
+		velocity.y = -jumpPower
 		$AnimationPlayer.seek(0)
 		$AnimationPlayer.play("jump")
 

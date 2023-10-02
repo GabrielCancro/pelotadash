@@ -14,3 +14,4 @@ func _ready():
 func onButtonClick():
 	get_tree().reload_current_scene()
 	get_tree().paused = false
+	GC.SCORE = 0

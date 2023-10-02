@@ -2,6 +2,7 @@ extends Node
 
 var PLAYER
 var LEVEL
+var LEVEL_SPEED = 400
 var CAMERA
 var UI
 var SCORE = 0

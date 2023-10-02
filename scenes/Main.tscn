@@ -1,6 +1,5 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Main.gd" type="Script" id=2]
 [ext_resource path="res://font/df_normal.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/parallax.jpg" type="Texture" id=4]
@@ -10,6 +9,7 @@
 [ext_resource path="res://prefabs/Camera2D.gd" type="Script" id=8]
 [ext_resource path="res://font/Rowdy-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://ui/EndGame.gd" type="Script" id=10]
+[ext_resource path="res://prefabs/PLayerBall.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -18,9 +18,8 @@ font_data = ExtResource( 9 )
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 316, 383 )
-jumpBase = 800
+[node name="PLayerBall" parent="." instance=ExtResource( 11 )]
+position = Vector2( 320, 245 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 600, 300 )
@@ -29,48 +28,13 @@ zoom = Vector2( 1.5, 1.5 )
 limit_smoothed = true
 smoothing_enabled = true
 drag_margin_top = 0.1
-drag_margin_bottom = 0.1
+drag_margin_right = 0.0
 script = ExtResource( 8 )
 
 [node name="LevelGenerator" type="Node2D" parent="."]
 script = ExtResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="EndGame" type="Control" parent="CanvasLayer"]
-pause_mode = 2
-visible = false
-margin_right = 1200.0
-margin_bottom = 600.0
-script = ExtResource( 10 )
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/EndGame"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.439216, 0.439216, 0.439216, 0.27451 )
-
-[node name="lb_gameover" type="Label" parent="CanvasLayer/EndGame"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -213.0
-margin_top = 120.0
-margin_right = 213.0
-margin_bottom = 179.0
-custom_fonts/font = SubResource( 1 )
-text = "GAME OVER"
-align = 1
-
-[node name="Button" type="Button" parent="CanvasLayer/EndGame"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -188.5
-margin_top = -170.0
-margin_right = 188.5
-margin_bottom = -63.0
-custom_fonts/font = ExtResource( 3 )
-text = "REINICIAR"
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
@@ -120,6 +84,41 @@ margin_right = 434.0
 margin_bottom = 82.0
 custom_fonts/font = ExtResource( 3 )
 text = "BLOQUES: 5"
+
+[node name="EndGame" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+margin_right = 1200.0
+margin_bottom = 600.0
+script = ExtResource( 10 )
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/EndGame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.439216, 0.439216, 0.439216, 0.27451 )
+
+[node name="lb_gameover" type="Label" parent="CanvasLayer/EndGame"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -213.0
+margin_top = 120.0
+margin_right = 213.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 1 )
+text = "GAME OVER"
+align = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/EndGame"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -188.5
+margin_top = -170.0
+margin_right = 188.5
+margin_bottom = -63.0
+custom_fonts/font = ExtResource( 3 )
+text = "REINICIAR"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true

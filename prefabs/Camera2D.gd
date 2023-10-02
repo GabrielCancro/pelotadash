@@ -4,7 +4,7 @@ extends Camera2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var CAMERA_STEP_SIZE = GC.GAME_SIZE.y/2
+onready var CAMERA_STEP_SIZE = GC.GAME_SIZE.y / 2
 var CURRENT_STEP = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -25,4 +25,4 @@ func _process(delta):
 
 	if(GC.PLAYER.position.y<CURRENT_STEP*CAMERA_STEP_SIZE-CAMERA_STEP_SIZE+50): CURRENT_STEP -= 1
 	if(GC.PLAYER.position.y>CURRENT_STEP*CAMERA_STEP_SIZE+CAMERA_STEP_SIZE-100): CURRENT_STEP += 1
-	position.y = CURRENT_STEP*CAMERA_STEP_SIZE
+	position.y = CURRENT_STEP*CAMERA_STEP_SIZE - CAMERA_STEP_SIZE / 4
