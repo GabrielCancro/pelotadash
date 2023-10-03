@@ -14,6 +14,8 @@ func _ready():
 	GC.PLAYER = self
 
 func _physics_process(delta):
+	angular_velocity = 0
+	rotation = 0
 	if lostControl: modulate = Color(.3,.3,.3,1)
 	else: modulate = Color(1,1,1,1)
 	check_horizontal_move(delta)
@@ -28,7 +30,7 @@ func check_horizontal_move(delta):
 	if($RayCast2DFordward.is_colliding()): lostControl = true
 	if(!lostControl):
 		if Input.is_action_pressed("right") && position.x<GC.GAME_SIZE.x*0.75: set_axis_velocity(Vector2(movePower,0))
-		elif Input.is_action_pressed("left"): set_axis_velocity(Vector2(-movePower,0))
+		elif Input.is_action_pressed("left"): set_axis_velocity(Vector2(-movePower*1.5,0))
 	set_axis_velocity( linear_velocity*0.98)
 	
 

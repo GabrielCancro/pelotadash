@@ -2,7 +2,7 @@ extends Node2D
 
 export var randomBlocks = true #if block creation is random or not
 export var total_blocks = 2 #amount of blocks in this level 
-export var speed = 30
+export var speed = 300
 
 var block_scenes = [
 	preload("res://blocks/block000.tscn"),
@@ -20,6 +20,9 @@ var level_elapsed = 0 #player distance elapsed
 var instanced_blocks = [] #array of blocks currently intanced in the level
 var last_block_instanced
 
+var distance_elapsed = 0
+var next_spark = 0
+
 func _ready():
 	GC.LEVEL = self
 	create_block_list()
@@ -27,8 +30,10 @@ func _ready():
 
 func _process(delta):
 	speed += .5*delta
+	distance_elapsed += speed*delta
+	check_new_spark()
 	for block in get_children():
-		block.position.x -= speed*10*delta
+		block.position.x -= speed*delta
 		var end_xpos = block.position.x + block.width
 		if block == last_block_instanced && end_xpos < 3000:
 			add_next_block(end_xpos)
@@ -67,3 +72,10 @@ func create_block_list():
 func remove_block(block):
 	instanced_blocks.erase(block)
 	block.queue_free()
+
+func check_new_spark():
+	if distance_elapsed >= next_spark:
+		next_spark += 100
+		var spark = preload("res://levelObjects/Spark.tscn").instance()
+		last_block_instanced.add_child(spark)
+		spark.global_position = Vector2(2000,rand_range(-200,600))

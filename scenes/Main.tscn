@@ -49,7 +49,7 @@ margin_left = -213.0
 margin_right = 213.0
 margin_bottom = 59.0
 custom_fonts/font = ExtResource( 3 )
-text = "vel -500"
+text = "0"
 align = 1
 
 [node name="lb_posy" type="Label" parent="CanvasLayer/UI"]
@@ -67,7 +67,7 @@ autowrap = true
 [node name="lb_vel" type="Label" parent="CanvasLayer/UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -378.0
+margin_left = -287.0
 margin_top = 27.0
 margin_bottom = 86.0
 custom_fonts/font = ExtResource( 3 )
