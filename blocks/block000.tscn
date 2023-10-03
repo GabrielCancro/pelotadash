@@ -8,7 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="Sizer" type="Control" parent="."]
-margin_right = 1230.0
+margin_right = 3114.0
 margin_bottom = 611.0
 
 [node name="Platform" parent="." instance=ExtResource( 1 )]
@@ -19,8 +19,20 @@ scale = Vector2( 8.2, 1 )
 position = Vector2( 955, 530 )
 scale = Vector2( 8.2, 1 )
 
+[node name="Platform4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1819, 530 )
+scale = Vector2( 8.2, 1 )
+
+[node name="Platform5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2307, 386 )
+scale = Vector2( 8.2, 1 )
+
+[node name="Platform6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2839, 566 )
+scale = Vector2( 8.2, 1 )
+
 [node name="Platform3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1688, 45.9998 )
+position = Vector2( 1984, -202 )
 rotation = -2.67012
 scale = Vector2( 8.2, 1 )
 

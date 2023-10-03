@@ -15,3 +15,7 @@ func onButtonClick():
 	get_tree().reload_current_scene()
 	get_tree().paused = false
 	GC.SCORE = 0
+
+func show_end_panel(win):
+	visible = true
+	if win: $lb_gameover.text = "YOU WIN !!"

@@ -12,7 +12,7 @@ onready var GAME_SIZE = get_viewport().get_visible_rect().size
 func _ready():
 	pass # Replace with function body.
 
-func end_game():
+func end_game(win=false):
 	get_tree().paused = true
 	yield(get_tree().create_timer(.5),"timeout")
-	get_node("/root/Main/CanvasLayer/EndGame").visible = true
+	get_node("/root/Main/CanvasLayer/EndGame").show_end_panel(win)
