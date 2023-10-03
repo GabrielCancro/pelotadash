@@ -7,16 +7,21 @@ var jumpCooldown = 0
 var lostControl = false
 var fordwardCollisionCooldown = 0
 onready var initial_position = position
+var force_position = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GC.PLAYER = self
-	pass # Replace with function body.
 
 func _physics_process(delta):
+	if lostControl: modulate = Color(.3,.3,.3,1)
+	else: modulate = Color(1,1,1,1)
 	check_horizontal_move(delta)
 	check_jump(delta)
 	check_dead()
+	if force_position:
+		position = force_position
+		force_position = null
 
 func check_horizontal_move(delta):
 	$RayCast2DFordward.force_raycast_update()
@@ -24,7 +29,7 @@ func check_horizontal_move(delta):
 	if(!lostControl):
 		if Input.is_action_pressed("right") && position.x<GC.GAME_SIZE.x*0.75: set_axis_velocity(Vector2(movePower,0))
 		elif Input.is_action_pressed("left"): set_axis_velocity(Vector2(-movePower,0))
-	set_axis_velocity( linear_velocity*0.95)
+	set_axis_velocity( linear_velocity*0.98)
 	
 
 func check_jump(delta):
@@ -47,3 +52,8 @@ func check_dead():
 		angular_velocity *= 0
 		position = initial_position
 		GC.end_game()
+
+func shoot_to(angle,power,pos=null):
+	lostControl = true
+	set_axis_velocity(angle*power)
+	if(pos): force_position = pos
