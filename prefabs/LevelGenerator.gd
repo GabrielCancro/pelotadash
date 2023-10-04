@@ -13,6 +13,7 @@ var block_scenes = [
 	preload("res://blocks/block005.tscn"),
 ]
 
+onready var screen_view = GC.GAME_SIZE.x * GC.CAMERA.zoom.x
 var block_list = [] #array of block that will create in secuential order
 var block_index = 0 #index of the next block to be instantiated
 var level_length = 0 #total distance of the level
@@ -27,6 +28,7 @@ func _ready():
 	GC.LEVEL = self
 	create_block_list()
 	add_next_block(0)
+	print("screen_view ",screen_view)
 
 func _process(delta):
 	speed += .5*delta
