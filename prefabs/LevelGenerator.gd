@@ -4,15 +4,7 @@ export var randomBlocks = true #if block creation is random or not
 export var total_blocks = 2 #amount of blocks in this level 
 export var speed = 300
 
-var block_scenes = [
-	preload("res://blocks/natural/blk_natural_001.tscn"),
-	preload("res://blocks/block000.tscn"),
-	preload("res://blocks/block001.tscn"),
-	preload("res://blocks/block002.tscn"),
-	preload("res://blocks/block003.tscn"),
-	preload("res://blocks/block004.tscn"),
-	preload("res://blocks/block005.tscn"),
-]
+var block_scenes #array of block scenes availables
 
 onready var screen_view = GC.GAME_SIZE.x * GC.CAMERA.zoom.x
 var block_list = [] #array of block that will create in secuential order
@@ -27,6 +19,7 @@ var next_spark = 0
 
 func _ready():
 	GC.LEVEL = self
+	block_scenes = DG.get_available_block_scenes_list()
 	create_block_list()
 	add_next_block(0)
 	print("screen_view ",screen_view)
@@ -59,7 +52,7 @@ func add_next_block(_x):
 func create_block_list():
 	var block_id
 	var last_block_id = -1
-	block_list = [0]
+	block_list = []
 	if randomBlocks: randomize()
 	for i in range(total_blocks):
 		if randomBlocks: 
