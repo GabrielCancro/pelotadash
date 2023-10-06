@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levelObjects/natural_objects/Platform_M.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levelObjects/natural_objects/Platform_L.tscn" type="PackedScene" id=2]
+[ext_resource path="res://blocks/blocks.gd" type="Script" id=3]
+[ext_resource path="res://levelObjects/natural_objects/Platform_XL.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levelObjects/natural_objects/Platform_S.tscn" type="PackedScene" id=5]
+
+[node name="Block001" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sizer" type="Control" parent="."]
+margin_left = -22.0
+margin_top = -679.0
+margin_right = 4988.0
+margin_bottom = 998.0
+
+[node name="Nueva Plataforma" parent="." instance=ExtResource( 1 )]
+position = Vector2( 214, 353 )
+
+[node name="Nueva Plataforma21" parent="." instance=ExtResource( 1 )]
+position = Vector2( 929, 133 )
+
+[node name="Nueva Plataforma3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 888, 486 )
+
+[node name="Nueva Plataforma5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1541, -97 )
+
+[node name="Nueva Plataforma6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1937, -231 )
+
+[node name="Nueva Plataforma20" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2270, -385 )
+rotation = -1.5708
+
+[node name="Nueva Plataforma7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1713, 675 )
+
+[node name="Nueva Plataforma14" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2435, 393 )
+rotation = -2.07694
+
+[node name="Nueva Plataforma13" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2166, 701 )
+rotation = -0.546288
+
+[node name="Nueva Plataforma11" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3605, 610 )
+
+[node name="Nueva Plataforma12" parent="." instance=ExtResource( 1 )]
+position = Vector2( 4108, 511 )
+
+[node name="plat Natural SupSMALL" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3333, 82 )
+
+[node name="plat Natural SupSMALL4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4092, 195 )
+
+[node name="plat Natural SupSMALL2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 573, 294 )
+
+[node name="plat Natural SupSMALL3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1233, 50 )
+
+[node name="Nueva Plataforma17" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2969, 55 )
+
+[node name="Nueva Plataforma18" parent="." instance=ExtResource( 1 )]
+position = Vector2( 3720, 124 )
+
+[node name="plat Natural larga" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2663, 823 )
+
+[node name="plat Natural larga3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 4641, 374 )
+
+[node name="plat Natural larga2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2380, 13 )
+
+[node name="plat Natural SMALL" parent="." instance=ExtResource( 5 )]
+position = Vector2( 3208, 717 )
+
+[node name="plat Natural SMALL2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1300, 609 )

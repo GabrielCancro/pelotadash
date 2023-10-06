@@ -5,6 +5,7 @@ export var total_blocks = 2 #amount of blocks in this level
 export var speed = 300
 
 var block_scenes = [
+	preload("res://blocks/natural/blk_natural_001.tscn"),
 	preload("res://blocks/block000.tscn"),
 	preload("res://blocks/block001.tscn"),
 	preload("res://blocks/block002.tscn"),
@@ -58,7 +59,7 @@ func add_next_block(_x):
 func create_block_list():
 	var block_id
 	var last_block_id = -1
-	block_list = []
+	block_list = [0]
 	if randomBlocks: randomize()
 	for i in range(total_blocks):
 		if randomBlocks: 
