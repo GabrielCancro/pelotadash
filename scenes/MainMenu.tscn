@@ -21,21 +21,21 @@ align = 1
 
 [node name="btn_start" parent="." instance=ExtResource( 1 )]
 margin_left = 505.0
-margin_top = 203.0
+margin_top = 171.0
 margin_right = 725.0
-margin_bottom = 268.0
+margin_bottom = 236.0
 text = "Start Game"
 
-[node name="btn_options" parent="." instance=ExtResource( 1 )]
+[node name="btn_shop" parent="." instance=ExtResource( 1 )]
 margin_left = 505.0
-margin_top = 303.0
+margin_top = 271.0
 margin_right = 725.0
-margin_bottom = 368.0
-text = "Options"
+margin_bottom = 336.0
+text = "Shop"
 
 [node name="btn_quit" parent="." instance=ExtResource( 1 )]
 margin_left = 505.0
-margin_top = 405.0
+margin_top = 373.0
 margin_right = 725.0
-margin_bottom = 470.0
+margin_bottom = 438.0
 text = "Quit"

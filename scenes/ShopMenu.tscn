@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/CustomButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/Carrousel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ShopMenu.gd" type="Script" id=3]
+
+[node name="ShopMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="HBox_Header" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 32.0
+margin_bottom = 92.0
+custom_constants/separation = 18
+alignment = 1
+
+[node name="btn_biomes" parent="HBox_Header" instance=ExtResource( 1 )]
+margin_left = 73.0
+margin_right = 323.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 250, 60 )
+text = "BIOMES"
+
+[node name="btn_biomes2" parent="HBox_Header" instance=ExtResource( 1 )]
+margin_left = 341.0
+margin_right = 591.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 250, 60 )
+text = "POWER UPS"
+
+[node name="btn_biomes3" parent="HBox_Header" instance=ExtResource( 1 )]
+margin_left = 609.0
+margin_right = 859.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 250, 60 )
+text = "SKINS"
+
+[node name="btn_biomes4" parent="HBox_Header" instance=ExtResource( 1 )]
+margin_left = 877.0
+margin_right = 1127.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 250, 60 )
+text = "MUSICS"
+
+[node name="Carrousel" parent="." instance=ExtResource( 2 )]
+margin_top = -179.0
+margin_bottom = 253.0
+
+[node name="btn_back" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -244.0
+margin_top = -81.0
+margin_right = -24.0
+margin_bottom = -16.0
+text = "Back"

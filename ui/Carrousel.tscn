@@ -1,0 +1,208 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/ShopCarrouselItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://font/Rowdy-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/Carrousel.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 120
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 4
+outline_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Carrousel" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -600.0
+margin_top = -300.0
+margin_right = 600.0
+margin_bottom = 132.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.160784 )
+
+[node name="Left_ShopCarrouselItem" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 104.0
+margin_top = -106.0
+margin_right = 464.0
+margin_bottom = 154.0
+rect_scale = Vector2( 0.8, 0.8 )
+
+[node name="Middle_ShopCarrouselItem" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -170.0
+margin_right = 180.0
+margin_bottom = 90.0
+
+[node name="Right_ShopCarrouselItem" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -106.0
+margin_right = -40.0
+margin_bottom = 154.0
+rect_scale = Vector2( 0.8, 0.8 )
+
+[node name="bt_left" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -59.5
+margin_right = 131.0
+margin_bottom = 91.5
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+text = "<"
+flat = true
+
+[node name="bt_right" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -131.0
+margin_top = -59.5
+margin_bottom = 91.5
+focus_mode = 0
+custom_fonts/font = SubResource( 1 )
+text = ">"
+flat = true
+
+[node name="HBox" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -58.0
+margin_bottom = 11.0
+alignment = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="point1" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 497.0
+margin_top = 5.0
+margin_right = 514.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point2" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 518.0
+margin_top = 5.0
+margin_right = 535.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point3" type="Label" parent="HBox"]
+modulate = Color( 1, 1, 0, 1 )
+margin_left = 539.0
+margin_top = 5.0
+margin_right = 556.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point4" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 560.0
+margin_top = 5.0
+margin_right = 577.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point5" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 581.0
+margin_top = 5.0
+margin_right = 598.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point6" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 602.0
+margin_top = 5.0
+margin_right = 619.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point7" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 623.0
+margin_top = 5.0
+margin_right = 640.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point8" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 644.0
+margin_top = 5.0
+margin_right = 661.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point9" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 665.0
+margin_top = 5.0
+margin_right = 682.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1
+
+[node name="point10" type="Label" parent="HBox"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+margin_left = 686.0
+margin_top = 5.0
+margin_right = 703.0
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "*"
+valign = 1

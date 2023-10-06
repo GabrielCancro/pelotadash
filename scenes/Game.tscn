@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://prefabs/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/PLayerBall.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://ui/UI.gd" type="Script" id=8]
 [ext_resource path="res://assets/tile_background.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/parallax.jpg" type="Texture" id=10]
+[ext_resource path="res://ui/CustomButton.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -92,7 +93,7 @@ script = ExtResource( 7 )
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/EndGame"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.439216, 0.439216, 0.439216, 0.27451 )
+color = Color( 0.423529, 0.423529, 0.423529, 0.607843 )
 
 [node name="lb_gameover" type="Label" parent="CanvasLayer/EndGame"]
 anchor_left = 0.5
@@ -105,17 +106,29 @@ custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 align = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/EndGame"]
+[node name="btn_retry" parent="CanvasLayer/EndGame" instance=ExtResource( 11 )]
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -188.5
-margin_top = -170.0
-margin_right = 188.5
-margin_bottom = -63.0
-custom_fonts/font = ExtResource( 3 )
-text = "REINICIAR"
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = 26.0
+margin_right = 125.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 250, 60 )
+text = "RETRY"
+
+[node name="btn_menu" parent="CanvasLayer/EndGame" instance=ExtResource( 11 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = 122.0
+margin_right = 125.0
+margin_bottom = 182.0
+rect_min_size = Vector2( 250, 60 )
+text = "MAIN MENU"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
