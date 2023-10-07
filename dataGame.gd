@@ -51,3 +51,27 @@ func init_getted_blocks():
 		if pack.getted:
 			for b in pack.blocks:
 				BLOCK_DATA[pack.biome][b].getted = true
+
+func save_data():
+	var file = File.new()
+	file.open("gameData.sav", File.WRITE)
+	var full_data = {
+		"player": PLAYER_DATA,
+		"biomepack": BIOMEPACK_DATA,
+	}
+	file.store_string(to_json(full_data))
+	file.close()
+
+func load_data():
+	var file = File.new()
+	if file.file_exists("gameData.sav"):
+		file.open("gameData.sav", File.READ)
+		var data = parse_json(file.get_as_text())
+		file.close()
+		if typeof(data) == TYPE_DICTIONARY:
+			PLAYER_DATA = data.player
+			BIOMEPACK_DATA = data.biomepack
+		else:
+			printerr("Corrupted data!")
+	else:
+		printerr("No saved data!")
