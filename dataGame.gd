@@ -11,14 +11,6 @@ var BLOCK_DATA = {
 	},
 }
 
-var SKIN_DATA = {
-	"sk1":{"price":1000,"getted":false},
-}
-
-var MUSIC_DATA = {
-	"ms1":{"price":1000,"getted":false},
-}
-
 var PLAYER_DATA = {
 	"sparks":0, 
 	"current_skin":"sk1", 
@@ -27,10 +19,29 @@ var PLAYER_DATA = {
 }
 
 var BIOMEPACK_DATA = {
-	"bpack1":{"biome":"natural", "price":0, "getted":true, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
-	"bpack2":{"biome":"natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b4"]},
-	"bpack3":{"biome":"natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b5"]},
-	"bpack4":{"biome":"natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b6"]},
+	"bpack1":{"biome":"natural","img":"b_natural", "price":0, "getted":true, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
+	"bpack2":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b4"]},
+	"bpack3":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b5"]},
+	"bpack4":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b6"]},
+}
+
+var POWERPACK_DATA = {
+	"ppack1":{"name":"Super Jump","img":"p_super_jump","desc":"Jump higher holding SPACE" ,"price":1000,"getted":false},
+}
+
+var SKINPACK_DATA = {
+	"spack1":{"name":"Normal Boy","img":"s_pokebomb", "price":1000,"getted":false},
+}
+
+var MUSICPACK_DATA = {
+	"mpack1":{"name":"Jungle Relax","img":"m_jungle_relax", "price":1000,"getted":false},
+}
+
+var IMAGES = {
+	"b_natural":preload("res://assets/packs/biome_natural.jpg"),
+	"p_super_jump":preload("res://assets/packs/power_super_jump.jpg"),
+	"s_pokebomb":preload("res://assets/packs/skin_pokebomb.jpg"),
+	"m_jungle_relax":preload("res://assets/packs/music_jungle_relax.jpg"),
 }
 
 func _ready():
