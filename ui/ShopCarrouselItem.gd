@@ -7,29 +7,29 @@ var selected
 func _ready():
 	set_selected(false,true)
 
-func set_data(_data,_type):
-	print(_data)
-	data = _data
-	type = _type
+func set_data(current_type, pack_name):
+	data = DG.PACK_DATA[current_type][pack_name]
+	type = current_type
+	var getted = DG.PLAYER_DATA.packs_getted.has(pack_name)
 	$lb_red.text = ""
-	if _type=="biomes":
+	if type=="biomes":
 		$lb_title.text = "BIOME "+data.biome.to_upper()+" PACK"
 		$lb_desc.text = "Add new challenges to this biome."
 		if data.req_pack>0: $lb_red.text += "Need "+str(data.req_pack)+" biome packs"
 		if "J" in data.req_power: $lb_red.text += "\nNeed JUMP power up!"
-	elif _type=="powers":
+	elif type=="powers":
 		$lb_title.text = data.name.to_upper()
 		$lb_desc.text = data.desc
-	elif _type=="skins":
+	elif type=="skins":
 		$lb_title.text = data.name.to_upper()
 		$lb_desc.text = "Change your look!"
-	elif _type=="musics":
+	elif type=="musics":
 		$lb_title.text = data.name.to_upper()
 		$lb_desc.text = "Add new great music to play"
 		
 	$lb_price.text = "$"+str(data.price)
-	$lb_price.visible = !data.getted
-	$lb_getted.visible = data.getted
+	$lb_price.visible = !getted
+	$lb_getted.visible = getted
 	$TextureRect.texture = DG.IMAGES[data.img]
 
 func set_selected(val,forced=false):

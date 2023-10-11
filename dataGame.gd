@@ -15,26 +15,26 @@ var PLAYER_DATA = {
 	"sparks":0, 
 	"current_skin":"sk1", 
 	"current_music":"ms1", 
-	"current_biome":"natural"
+	"current_biome":"natural",
+	"packs_getted":["bpack1"]
 }
 
-var BIOMEPACK_DATA = {
-	"bpack1":{"biome":"natural","img":"b_natural", "price":0, "getted":true, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
-	"bpack2":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b4"]},
-	"bpack3":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b5"]},
-	"bpack4":{"biome":"natural","img":"b_natural", "price":1200, "getted":false, "req_pack":0, "req_power":"", "blocks":["b6"]},
-}
-
-var POWERPACK_DATA = {
-	"ppack1":{"name":"Super Jump","img":"p_super_jump","desc":"Jump higher holding SPACE" ,"price":1000,"getted":false},
-}
-
-var SKINPACK_DATA = {
-	"spack1":{"name":"Normal Boy","img":"s_pokebomb", "price":1000,"getted":false},
-}
-
-var MUSICPACK_DATA = {
-	"mpack1":{"name":"Jungle Relax","img":"m_jungle_relax", "price":1000,"getted":false},
+var PACK_DATA = {
+	"biomes":{
+		"bpack1":{"biome":"natural","img":"b_natural", "price":0, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
+		"bpack2":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b4"]},
+		"bpack3":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b5"]},
+		"bpack4":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b6"]},
+	},
+	"powers":{
+		"ppack1":{"name":"Super Jump","img":"p_super_jump","desc":"Jump higher holding SPACE" ,"price":1000},
+	},
+	"skins":{
+		"spack1":{"name":"Normal Boy","img":"s_pokebomb", "price":1000},
+	},
+	"musics":{
+		"mpack1":{"name":"Jungle Relax","img":"m_jungle_relax", "price":1000},
+	}
 }
 
 var IMAGES = {
@@ -45,7 +45,7 @@ var IMAGES = {
 }
 
 func _ready():
-	init_getted_blocks()
+	init_getted_blocks_from_packs()
 
 func get_available_block_scenes_list():
 	var biome = PLAYER_DATA.current_biome
@@ -56,10 +56,10 @@ func get_available_block_scenes_list():
 			array.append(block.scene)
 	return array
 
-func init_getted_blocks():
-	for i in BIOMEPACK_DATA:
-		var pack = BIOMEPACK_DATA[i]
-		if pack.getted:
+func init_getted_blocks_from_packs():
+	for key in PACK_DATA.biomes:
+		if PLAYER_DATA.packs_getted.has(key):
+			var pack = PACK_DATA.biomes[key]
 			for b in pack.blocks:
 				BLOCK_DATA[pack.biome][b].getted = true
 
@@ -67,8 +67,7 @@ func save_data():
 	var file = File.new()
 	file.open("gameData.sav", File.WRITE)
 	var full_data = {
-		"player": PLAYER_DATA,
-		"biomepack": BIOMEPACK_DATA,
+		"player": PLAYER_DATA
 	}
 	file.store_string(to_json(full_data))
 	file.close()
@@ -81,7 +80,6 @@ func load_data():
 		file.close()
 		if typeof(data) == TYPE_DICTIONARY:
 			PLAYER_DATA = data.player
-			BIOMEPACK_DATA = data.biomepack
 		else:
 			printerr("Corrupted data!")
 	else:

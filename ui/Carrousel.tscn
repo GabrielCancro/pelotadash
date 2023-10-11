@@ -36,6 +36,10 @@ margin_right = 364.0
 margin_bottom = 305.0
 
 [node name="ShopCarrouselItem" parent="ItemsList" instance=ExtResource( 1 )]
+margin_left = 421.0
+margin_top = -3.0
+margin_right = 781.0
+margin_bottom = 314.0
 
 [node name="bt_left" type="Button" parent="."]
 anchor_top = 0.5

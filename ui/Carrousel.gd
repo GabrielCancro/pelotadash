@@ -13,10 +13,7 @@ func _ready():
 
 func fill_carrousel_items(_type):
 	current_type = _type
-	if(current_type=="biomes"): PACK_DATA = DG.BIOMEPACK_DATA
-	elif(current_type=="powers"): PACK_DATA = DG.POWERPACK_DATA
-	elif(current_type=="skins"): PACK_DATA = DG.SKINPACK_DATA
-	elif(current_type=="musics"): PACK_DATA = DG.MUSICPACK_DATA
+	PACK_DATA = DG.PACK_DATA[_type]
 	
 	var i = 0
 	for old in $ItemsList.get_children(): 
@@ -24,7 +21,7 @@ func fill_carrousel_items(_type):
 		old.queue_free()
 	for pack in PACK_DATA:
 		var cr = carrousel_item_scene.instance()
-		cr.set_data( PACK_DATA[pack], current_type )
+		cr.set_data(current_type, pack)
 		cr.rect_position.x += (cr.rect_size.x + 30) * i
 		$ItemsList.add_child(cr)
 		i+=1

@@ -3,7 +3,7 @@ extends Control
 var carrousel_index = 1
 
 func _ready():
-	$btn_back.connect("button_down",self,"on_click_button",["back"])
+	$HBox_Header/btn_back.connect("button_down",self,"on_click_button",["back"])
 	$HBox_Header/btn_biomes.connect("button_down",self,"on_click_button",["biomes"])
 	$HBox_Header/btn_powers.connect("button_down",self,"on_click_button",["powers"])
 	$HBox_Header/btn_skins.connect("button_down",self,"on_click_button",["skins"])
