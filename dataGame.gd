@@ -12,7 +12,7 @@ var BLOCK_DATA = {
 }
 
 var PLAYER_DATA = {
-	"sparks":0, 
+	"sparks":2500, 
 	"current_skin":"sk1", 
 	"current_music":"ms1", 
 	"current_biome":"natural",

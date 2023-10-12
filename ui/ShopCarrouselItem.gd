@@ -44,3 +44,6 @@ func set_selected(val,forced=false):
 		$Tween.interpolate_property(self,"modulate",modulate,Color(.3,.3,.3,1),time)
 		$Tween.interpolate_property(self,"rect_position",rect_position,rect_position+Vector2(0,+25),time)
 	$Tween.start()
+
+func get_data():
+	return data

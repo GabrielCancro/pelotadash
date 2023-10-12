@@ -9,7 +9,6 @@ var PACK_DATA
 func _ready():
 	$bt_left.connect("button_down",self,"carrousel_back")
 	$bt_right.connect("button_down",self,"carrousel_next")
-	fill_carrousel_items("biomes")
 
 func fill_carrousel_items(_type):
 	current_type = _type
@@ -61,3 +60,9 @@ func carrousel_back():
 	if(carrousel_index[current_type]>0): 
 		carrousel_index[current_type] -= 1
 		update_carrousel_data()
+
+func get_current_pack():
+	return current_carrousel_item
+
+func update_current_pack():
+	pass
