@@ -10,6 +10,8 @@ func _ready():
 func set_data(current_type, pack_name):
 	data = DG.PACK_DATA[current_type][pack_name]
 	type = current_type
+	data.name = pack_name
+	data.type = current_type
 	var getted = DG.PLAYER_DATA.packs_getted.has(pack_name)
 	$lb_red.text = ""
 	if type=="biomes":
@@ -47,3 +49,6 @@ func set_selected(val,forced=false):
 
 func get_data():
 	return data
+
+func refresh_data():
+	set_data(data.type,data.name)

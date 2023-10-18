@@ -11,7 +11,9 @@ func _ready():
 	$HBox_Header/btn_skins.connect("button_down",self,"on_click_button",["skins"])
 	$HBox_Header/btn_musics.connect("button_down",self,"on_click_button",["musics"])
 	$btn_buy.connect("button_down",self,"on_click_button",["buy"])
+	$btn_sparks.connect("button_down",self,"on_click_button",["sparks"])
 	on_click_button("biomes")
+	current_spark_counter = DG.PLAYER_DATA.sparks
 	
 func _process(delta):
 	var step = (DG.PLAYER_DATA.sparks-current_spark_counter) * 0.1
@@ -43,4 +45,13 @@ func on_click_button(code):
 		$Carrousel.fill_carrousel_items("musics")
 	elif code=="buy":
 		var pack = $Carrousel.get_current_pack()
-		print("$$ ",pack.get_data().price)
+		var pack_data = pack.get_data()
+		if(!DG.PLAYER_DATA.packs_getted.has(pack_data.name)):
+			if(pack_data.price<=DG.PLAYER_DATA.sparks):
+				DG.PLAYER_DATA.sparks -= pack_data.price
+				DG.PLAYER_DATA.packs_getted.append(pack_data.name)
+				pack.refresh_data()
+				DG.save_data()
+	elif code=="sparks":
+		DG.PLAYER_DATA.sparks += 500
+		DG.save_data()

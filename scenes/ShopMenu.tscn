@@ -100,6 +100,17 @@ margin_right = 110.0
 margin_bottom = -16.0
 text = "BUY IT!"
 
+[node name="btn_sparks" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -314.0
+margin_top = -486.0
+margin_right = -239.0
+margin_bottom = -447.0
+text = "+500"
+
 [node name="lb_sparks" type="Label" parent="."]
 margin_left = 19.0
 margin_top = 115.0
