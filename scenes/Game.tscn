@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://prefabs/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/PLayerBall.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/tile_background.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/parallax.jpg" type="Texture" id=10]
 [ext_resource path="res://ui/CustomButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefabs/LevelGenerator2.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -32,6 +33,9 @@ script = ExtResource( 1 )
 
 [node name="LevelGenerator" type="Node2D" parent="."]
 script = ExtResource( 5 )
+
+[node name="LevelGenerator2" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

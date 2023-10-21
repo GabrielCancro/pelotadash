@@ -4,6 +4,12 @@
 
 [node name="plat Natural Mediana" type="Node2D"]
 
+[node name="Sizer" type="Control" parent="."]
+margin_left = -170.0
+margin_top = -38.0
+margin_right = 174.0
+margin_bottom = 43.0
+
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]

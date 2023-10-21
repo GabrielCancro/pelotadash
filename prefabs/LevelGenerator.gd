@@ -17,24 +17,24 @@ var last_block_instanced
 var distance_elapsed = 0
 var next_spark = 0
 
-func _ready():
-	GC.LEVEL = self
-	block_scenes = DG.get_available_block_scenes_list()
-	create_block_list()
-	add_next_block(0)
-	print("screen_view ",screen_view)
-
-func _process(delta):
-	speed += .5*delta
-	distance_elapsed += speed*delta
-	check_new_spark()
-	for block in get_children():
-		block.position.x -= speed*delta
-		var end_xpos = block.position.x + block.width
-		if block == last_block_instanced && end_xpos < 3000:
-			add_next_block(end_xpos)
-		if end_xpos < -1000:
-			remove_block(block)
+#func _ready():
+#	GC.LEVEL = self
+#	block_scenes = DG.get_available_block_scenes_list()
+#	create_block_list()
+#	add_next_block(0)
+#	print("screen_view ",screen_view)
+#
+#func _process(delta):
+#	speed += .5*delta
+#	distance_elapsed += speed*delta
+#	check_new_spark()
+#	for block in get_children():
+#		block.position.x -= speed*delta
+#		var end_xpos = block.position.x + block.width
+#		if block == last_block_instanced && end_xpos < 3000:
+#			add_next_block(end_xpos)
+#		if end_xpos < -1000:
+#			remove_block(block)
 
 func add_next_block(_x):
 	if(block_index>=block_list.size()): return
