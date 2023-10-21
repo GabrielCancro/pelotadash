@@ -5,6 +5,7 @@
 [node name="plat Natural SMALL" type="Node2D"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 112, 42 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( 0.5, 2.75 )
@@ -16,7 +17,5 @@ scale = Vector2( 0.708178, 0.667642 )
 polygon = PoolVector2Array( -162.389, -56.9167, -131.323, 1.49781, -122.85, 41.9386, -50.8347, 80.8817, 105.906, 52.4233, 115.79, 13.4803, 160.976, -56.9167 )
 
 [node name="Sizer" type="Control" parent="."]
-margin_left = -115.0
-margin_top = -38.0
-margin_right = 111.0
-margin_bottom = 43.0
+margin_right = 226.0
+margin_bottom = 98.0

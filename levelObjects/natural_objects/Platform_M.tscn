@@ -5,12 +5,11 @@
 [node name="plat Natural Mediana" type="Node2D"]
 
 [node name="Sizer" type="Control" parent="."]
-margin_left = -170.0
-margin_top = -38.0
-margin_right = 174.0
-margin_bottom = 43.0
+margin_right = 344.0
+margin_bottom = 81.0
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 167, 36 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( 0.5, 2.75 )

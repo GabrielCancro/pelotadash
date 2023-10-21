@@ -56,7 +56,7 @@ func get_random_platform():
 func create_start_platforms():
 	for i in range(2):
 		var platform = preload("res://levelObjects/natural_objects/Platform_L.tscn").instance()
-		platform.position.x = 600+i*850
+		platform.position.x = 400+i*850
 		platform.position.y = GC.GAME_SIZE.y+100
 		add_child(platform)
 		last_block_instanced = platform
@@ -73,6 +73,7 @@ func check_new_spark():
 func check_end_platform():
 	if end_generation: return
 	if elapsed_distance >= total_distance:
+		elapsed_distance = total_distance
 		end_generation = true
 		var platform = preload("res://blocks/endBlock.tscn").instance()
 		platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2

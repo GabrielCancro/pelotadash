@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/biome_natural/PlatNatural larga.png" type="Texture" id=1]
+[ext_resource path="res://levelObjects/natural_objects/Wall_A.tscn" type="PackedScene" id=2]
 
 [node name="plat Natural larga" type="Node2D"]
 
+[node name="Sizer" type="Control" parent="."]
+margin_right = 623.0
+margin_bottom = 92.0
+
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 311, 42 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( 0.5, 2.75 )
@@ -15,8 +21,5 @@ texture = ExtResource( 1 )
 scale = Vector2( 0.718722, 0.761295 )
 polygon = PoolVector2Array( -443.844, -45.9743, -415, 11, -416, 60, 395, 60, 421, -1, 446, -42 )
 
-[node name="Sizer" type="Control" parent="."]
-margin_left = -302.0
-margin_top = -38.0
-margin_right = 302.0
-margin_bottom = 43.0
+[node name="Wall_A" parent="." instance=ExtResource( 2 )]
+position = Vector2( 341, 0 )
