@@ -1,9 +1,9 @@
 extends Node2D
 
-export var speed = 300
-var max_speed = 400
+export var speed = 250
+var max_speed = 360
 var elapsed_distance = 0
-var total_distance = 2500 + 2000
+var total_distance = 5500 + 2000
 var end_generation = false
 var next_platform = 0
 
@@ -21,7 +21,7 @@ func _ready():
 	create_start_platforms()
 
 func _process(delta):
-	if(speed<max_speed): speed += delta*5
+	if(speed<max_speed): speed += delta*2.5
 	if elapsed_distance < total_distance: elapsed_distance += speed*delta
 	else: elapsed_distance = total_distance
 	check_end_platform()
