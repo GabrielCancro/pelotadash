@@ -11,7 +11,7 @@ func _ready():
 	$Tween.start()
 
 func _process(delta):
-	if GC.SCORE > 0:
+	if GC.SCORE >= 0:
 		$lb_sparks.text = "SPARKS "+str(DG.PLAYER_DATA.sparks-ceil(GC.SCORE))
 		$lb_add_sparks.text = "+ "+str(ceil(GC.SCORE))
 	if(GC.SCORE==0): $lb_add_sparks.text = ""

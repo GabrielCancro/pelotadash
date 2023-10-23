@@ -2,7 +2,7 @@ extends Node2D
 
 export var speed = 300
 var elapsed_distance = 0
-var total_distance = 1500
+var total_distance = 1500 + 2000
 var end_generation = false
 var next_platform = 0
 
@@ -20,7 +20,8 @@ func _ready():
 	create_start_platforms()
 
 func _process(delta):
-	elapsed_distance += speed*delta
+	if elapsed_distance < total_distance: elapsed_distance += speed*delta
+	else: elapsed_distance = total_distance
 	check_end_platform()
 	check_new_platform()
 	check_new_spark()
@@ -72,8 +73,7 @@ func check_new_spark():
 
 func check_end_platform():
 	if end_generation: return
-	if elapsed_distance >= total_distance:
-		elapsed_distance = total_distance
+	if elapsed_distance+2000 >= total_distance:
 		end_generation = true
 		var platform = preload("res://blocks/endBlock.tscn").instance()
 		platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2

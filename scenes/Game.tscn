@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://prefabs/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://prefabs/PLayerBall.tscn" type="PackedScene" id=2]
@@ -13,8 +13,20 @@
 [ext_resource path="res://ui/CustomButton.tscn" type="PackedScene" id=11]
 [ext_resource path="res://prefabs/LevelGenerator2.gd" type="Script" id=12]
 
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 9
+outline_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=1]
 size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+outline_size = 4
+outline_color = Color( 0.113725, 0.113725, 0.113725, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Game" type="Node2D"]
@@ -89,7 +101,6 @@ text = "BLOQUES: 5"
 
 [node name="EndGame" type="Control" parent="CanvasLayer"]
 pause_mode = 2
-visible = false
 margin_right = 1200.0
 margin_bottom = 600.0
 script = ExtResource( 7 )
@@ -99,14 +110,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.423529, 0.423529, 0.423529, 0.607843 )
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/EndGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -148.0
+margin_right = 256.0
+margin_bottom = 228.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
+
 [node name="lb_gameover" type="Label" parent="CanvasLayer/EndGame"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -213.0
-margin_top = 120.0
+margin_top = 56.0
 margin_right = 213.0
-margin_bottom = 179.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 2 )
 text = "GAME OVER"
 align = 1
 
@@ -115,37 +139,70 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -458.0
-margin_top = -56.0
-margin_right = 458.0
-margin_bottom = 8.0
+margin_left = -288.5
+margin_top = -110.5
+margin_right = 288.5
+margin_bottom = -49.5
 custom_fonts/font = SubResource( 1 )
-text = "You collected 200 sparks"
+text = "SPARKS 2200"
 align = 1
 
-[node name="btn_retry" parent="CanvasLayer/EndGame" instance=ExtResource( 11 )]
+[node name="lb_add_sparks" type="Label" parent="CanvasLayer/EndGame"]
+modulate = Color( 0.972549, 1, 0.482353, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = 26.0
-margin_right = 125.0
-margin_bottom = 86.0
-rect_min_size = Vector2( 250, 60 )
+margin_left = -143.5
+margin_top = -44.0
+margin_right = 143.5
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 3 )
+text = "+80000"
+align = 1
+
+[node name="lb_dec_sparks" type="Label" parent="CanvasLayer/EndGame"]
+modulate = Color( 0.972549, 1, 0.482353, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -143.5
+margin_top = 14.0
+margin_right = 143.5
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "-2000"
+align = 1
+
+[node name="HBox" type="HBoxContainer" parent="CanvasLayer/EndGame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -334.5
+margin_top = 146.0
+margin_right = 334.5
+margin_bottom = 206.0
+custom_constants/separation = 43
+alignment = 1
+
+[node name="btn_retry" parent="CanvasLayer/EndGame/HBox" instance=ExtResource( 11 )]
+margin_left = 113.0
+margin_right = 313.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 60 )
 text = "RETRY"
 
-[node name="btn_menu" parent="CanvasLayer/EndGame" instance=ExtResource( 11 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -125.0
-margin_top = 122.0
-margin_right = 125.0
-margin_bottom = 182.0
-rect_min_size = Vector2( 250, 60 )
+[node name="btn_menu" parent="CanvasLayer/EndGame/HBox" instance=ExtResource( 11 )]
+margin_left = 356.0
+margin_right = 556.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 60 )
 text = "MAIN MENU"
+
+[node name="Tween" type="Tween" parent="CanvasLayer/EndGame"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_ignore_camera_zoom = true
