@@ -21,8 +21,7 @@ func _ready():
 	create_start_platforms()
 
 func _process(delta):
-	speed += delta*150*max_speed/total_distance
-	print(speed)
+	if(speed<max_speed): speed += delta*5
 	if elapsed_distance < total_distance: elapsed_distance += speed*delta
 	else: elapsed_distance = total_distance
 	check_end_platform()
@@ -31,7 +30,7 @@ func _process(delta):
 	for obj in get_children():
 		if !is_instance_valid(obj): continue
 		obj.position.x -= speed*delta
-		if obj.position.x<-1000: obj.queue_free()
+		if !end_generation && obj.position.x<-1000: obj.queue_free()
 
 func check_new_platform():
 	if end_generation: return
