@@ -19,11 +19,12 @@ func _process(delta):
 		scale.y = rand_range(.4,.8)
 		modulate.a = rand_range(.6,.8)
 	if !getted:
-		if dist_to_player<200: getted = true
+		if dist_to_player<200: 
+			getted = true
+			GC.SCORE += score
 	else:
-		speed += delta * 40
+		speed += delta * 80
 		global_position += global_position.direction_to(GC.PLAYER.global_position)*speed
 		if(dist_to_player<=speed*2):
-			GC.SCORE += score
 			queue_free()
 

@@ -19,3 +19,8 @@ polygon = PoolVector2Array( -162.389, -56.9167, -131.323, 1.49781, -122.85, 41.9
 [node name="Sizer" type="Control" parent="."]
 margin_right = 226.0
 margin_bottom = 98.0
+
+[node name="ObstaclePoints" type="Node2D" parent="."]
+
+[node name="p1" type="Node2D" parent="ObstaclePoints"]
+position = Vector2( 158, -1 )

@@ -1,77 +1,101 @@
 extends Node2D
 
-export var randomBlocks = true #if block creation is random or not
-export var total_blocks = 2 #amount of blocks in this level 
 export var speed = 300
+var max_speed = 400
+var elapsed_distance = 0
+var total_distance = 2500 + 2000
+var end_generation = false
+var next_platform = 0
 
-var block_scenes #array of block scenes availables
-
-onready var screen_view = GC.GAME_SIZE.x * GC.CAMERA.zoom.x
-var block_list = [] #array of block that will create in secuential order
-var block_index = 0 #index of the next block to be instantiated
-var level_length = 0 #total distance of the level
-var level_elapsed = 0 #player distance elapsed 
-var instanced_blocks = [] #array of blocks currently intanced in the level
 var last_block_instanced
+var next_spark = 1000
 
-var distance_elapsed = 0
-var next_spark = 0
+var max_jump_horizontal_distance = 200 #320
+var min_jump_horizontal_distance = 100
+var height_level = 0
+var max_jump_height = 1
 
-#func _ready():
-#	GC.LEVEL = self
-#	block_scenes = DG.get_available_block_scenes_list()
-#	create_block_list()
-#	add_next_block(0)
-#	print("screen_view ",screen_view)
-#
-#func _process(delta):
-#	speed += .5*delta
-#	distance_elapsed += speed*delta
-#	check_new_spark()
-#	for block in get_children():
-#		block.position.x -= speed*delta
-#		var end_xpos = block.position.x + block.width
-#		if block == last_block_instanced && end_xpos < 3000:
-#			add_next_block(end_xpos)
-#		if end_xpos < -1000:
-#			remove_block(block)
+func _ready():
+	randomize()
+	GC.LEVEL = self
+	create_start_platforms()
 
-func add_next_block(_x):
-	if(block_index>=block_list.size()): return
-	print("BLOCK INDEX ",block_index)
-	var block
-	var block_id = block_list[block_index]
-	if block_id==-1: block = preload("res://blocks/endBlock.tscn").instance()
-	else: block = block_scenes[ block_id ].instance()
-	block.position.x = _x
-	instanced_blocks.append(block)
-	last_block_instanced = block
-	add_child(block)
-	block_index += 1
+func _process(delta):
+	speed += delta*150*max_speed/total_distance
+	print(speed)
+	if elapsed_distance < total_distance: elapsed_distance += speed*delta
+	else: elapsed_distance = total_distance
+	check_end_platform()
+	check_new_platform()
+	check_new_spark()
+	for obj in get_children():
+		if !is_instance_valid(obj): continue
+		obj.position.x -= speed*delta
+		if obj.position.x<-1000: obj.queue_free()
 
-func create_block_list():
-	var block_id
-	var last_block_id = -1
-	block_list = []
-	if randomBlocks: randomize()
-	for i in range(total_blocks):
-		if randomBlocks: 
-			block_id = randi() % block_scenes.size()
-			if block_id==last_block_id: block_id = rand_range(0,block_scenes.size()-1)
-			last_block_id = block_id
-		else: 
-			block_id = i % block_scenes.size()
-		block_list.append(block_id)
-	block_list.append(-1)
-	print("BLOCKS LIST ",block_list)
+func check_new_platform():
+	if end_generation: return
+	if elapsed_distance>=next_platform: 
+		var obj = add_platform()
+		next_platform = elapsed_distance + obj.get_node("Sizer").rect_size.x + rand_range(min_jump_horizontal_distance,max_jump_horizontal_distance)
+		print("next_platform ",next_platform)
 
-func remove_block(block):
-	instanced_blocks.erase(block)
-	block.queue_free()
+func add_platform():
+	var platform = get_random_platform()
+	platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2
+	platform.position.y = GC.GAME_SIZE.y-height_level * 100
+	add_child(platform)
+	last_block_instanced = platform
+	print("ADD PLATFORM IN H:",height_level)
+	height_level = floor(rand_range( max(height_level-2,-2),min(height_level+max_jump_height+1,7)))
+	set_obstacles_in_platform(platform)
+	return platform
+
+func get_random_platform():
+	var val = randi()%100
+	if val<20: return preload("res://levelObjects/natural_objects/Platform_M.tscn").instance()
+	elif val<40: return preload("res://levelObjects/natural_objects/Platform_L.tscn").instance()
+	elif val<90: return preload("res://levelObjects/natural_objects/Platform_S.tscn").instance()
+	elif val<100: return preload("res://levelObjects/natural_objects/Platform_XS.tscn").instance()
+
+func create_start_platforms():
+	for i in range(2):
+		var platform = preload("res://levelObjects/natural_objects/Platform_L.tscn").instance()
+		platform.position.x = 400+i*850
+		platform.position.y = GC.GAME_SIZE.y+100
+		add_child(platform)
+		last_block_instanced = platform
 
 func check_new_spark():
-	if distance_elapsed >= next_spark:
+	if end_generation: return
+	if elapsed_distance+1000 >= next_spark:
 		next_spark += 100
 		var spark = preload("res://levelObjects/Spark.tscn").instance()
 		last_block_instanced.add_child(spark)
-		spark.global_position = Vector2(2000,rand_range(-200,600))
+		spark.global_position.x = 2000
+		spark.position.y = rand_range(-100,-500)
+
+func check_end_platform():
+	if end_generation: return
+	if elapsed_distance+2000 >= total_distance:
+		end_generation = true
+		var platform = preload("res://blocks/endBlock.tscn").instance()
+		platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2
+		platform.position.y = GC.GAME_SIZE.y-height_level * 100
+		add_child(platform)
+		last_block_instanced = platform
+
+func set_obstacles_in_platform(platform):
+	var points = platform.get_node_or_null("ObstaclePoints")
+	if !points: return
+	for pt in points.get_children():
+		var obs = get_random_obstacle(30)
+		if obs: pt.add_child(obs)
+
+func get_random_obstacle(percent = 100):
+	var rnd = randi()%100
+	print("RAND ",rnd,">",percent)
+	if(rnd>percent): return null
+	rnd = randi()%100
+	if(rnd<50): return preload("res://levelObjects/natural_objects/Column_A.tscn").instance()
+	else: return preload("res://levelObjects/natural_objects/Column_B.tscn").instance()

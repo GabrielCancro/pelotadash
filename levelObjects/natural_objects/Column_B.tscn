@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/biome_natural/Column_B.png" type="Texture" id=1]
+[ext_resource path="res://assets/biome_natural/Column_A.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+var isHitted = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Area2D.connect(\"body_entered\",self,\"on_body_enter\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+func on_body_enter(body):
+	if isHitted: return
+	print(\"BREAK!!! \",body.name)
+	if body==GC.PLAYER:
+		isHitted = true		
+		for spr in $Node2D.get_children():
+			$Tween.interpolate_property(spr,\"modulate\",Color(1,1,1,1),Color(1,1,1,0),.8,Tween.TRANS_QUAD,Tween.EASE_OUT)
+			$Tween.interpolate_property(spr,\"position\",spr.position,spr.position+Vector2(rand_range(80,250),rand_range(20,-80)),1,Tween.TRANS_QUAD,Tween.EASE_OUT)
+			$Tween.interpolate_property(spr,\"rotation\",spr.rotation,spr.rotation+rand_range(-2,2),1,Tween.TRANS_QUAD,Tween.EASE_OUT)
+		$Tween.start()
+		yield(get_tree().create_timer(.1),\"timeout\")
+		$KinematicBody2D.queue_free()
+		yield(get_tree().create_timer(.9),\"timeout\")
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 122.5 )
+
+[node name="Column_B" type="Node2D"]
+script = SubResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 84, 65 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+position = Vector2( -96, 143 )
+scale = Vector2( 0.708178, 0.667642 )
+polygon = PoolVector2Array( -12.7087, -633.573, -35.3019, -602.119, -38.126, -570.665, -56.483, -560.18, -60.7192, -497.272, -50.8347, -474.805, -63.5434, -438.858, -62.1313, -389.43, -36.7139, -380.443, -38.126, -344.496, -19.769, -328.02, -5.6483, -308.549, 50.8347, -307.051, 63.5433, -347.492, 77.6641, -369.959, 97.4331, -408.902, 88.9607, -468.814, 94.609, -494.277, 87.5486, -561.678, 70.6037, -573.661, 48.0105, -629.08, 18.357, -648.551 )
+
+[node name="Sizer" type="Control" parent="."]
+margin_left = -60.0
+margin_top = -200.0
+margin_right = 62.0
+margin_bottom = 4.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2" type="Sprite" parent="Node2D"]
+position = Vector2( -253, -273 )
+scale = Vector2( 0.334628, 0.338765 )
+texture = ExtResource( 2 )
+offset = Vector2( 759.052, 413.266 )
+
+[node name="Sprite3" type="Sprite" parent="Node2D"]
+position = Vector2( -253, -273 )
+scale = Vector2( 0.334628, 0.338765 )
+texture = ExtResource( 2 )
+offset = Vector2( 759.052, 413.266 )
+
+[node name="Sprite4" type="Sprite" parent="Node2D"]
+position = Vector2( -253, -217 )
+scale = Vector2( 0.334628, 0.338765 )
+texture = ExtResource( 2 )
+offset = Vector2( 759.052, 413.266 )
+
+[node name="Sprite" type="Sprite" parent="Node2D"]
+position = Vector2( -2, -103 )
+rotation = 3.13518
+scale = Vector2( 0.334628, 0.338765 )
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1, -112.5 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

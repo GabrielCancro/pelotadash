@@ -20,3 +20,11 @@ texture = ExtResource( 1 )
 position = Vector2( 2, 0 )
 scale = Vector2( 0.726806, 0.728854 )
 polygon = PoolVector2Array( -235, -43, -209, 9, -188, 58, 177, 56, 189, 9, 238, -40 )
+
+[node name="ObstaclePoints" type="Node2D" parent="."]
+
+[node name="p1" type="Node2D" parent="ObstaclePoints"]
+position = Vector2( 107, -4 )
+
+[node name="p2" type="Node2D" parent="ObstaclePoints"]
+position = Vector2( 230, -3 )

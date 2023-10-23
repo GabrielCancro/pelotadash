@@ -12,6 +12,7 @@ var force_position = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GC.PLAYER = self
+	visible = true
 
 func _physics_process(delta):
 	angular_velocity = 0
@@ -53,6 +54,7 @@ func check_dead():
 		linear_velocity *= 0
 		angular_velocity *= 0
 		position = initial_position
+		visible = false
 		GC.end_game()
 
 func shoot_to(angle,power,pos=null):

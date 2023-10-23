@@ -15,4 +15,5 @@ func _ready():
 func end_game(win=false):
 	get_tree().paused = true
 	yield(get_tree().create_timer(.5),"timeout")
+	get_node("/root/Game/CanvasLayer/UI").visible = false
 	get_node("/root/Game/CanvasLayer/EndGame").show_end_panel(win)
