@@ -4,9 +4,9 @@
 [ext_resource path="res://prefabs/PLayerBall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://font/df_normal.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/EndGame.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/biome_natural/biome_city.jpg" type="Texture" id=5]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=6]
 [ext_resource path="res://ui/UI.gd" type="Script" id=8]
-[ext_resource path="res://assets/tile_background.jpg" type="Texture" id=9]
 [ext_resource path="res://assets/parallax.jpg" type="Texture" id=10]
 [ext_resource path="res://prefabs/LevelGenerator.gd" type="Script" id=12]
 
@@ -78,11 +78,12 @@ motion_offset = Vector2( 0, 100 )
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.741176, 0.741176, 0.741176, 1 )
 margin_left = -1063.0
-margin_top = -590.0
+margin_top = -316.0
 margin_right = 1203.0
-margin_bottom = 600.0
-texture = ExtResource( 9 )
-stretch_mode = 2
+margin_bottom = 874.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 7
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 visible = false
