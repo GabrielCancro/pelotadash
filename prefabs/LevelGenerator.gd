@@ -96,5 +96,6 @@ func get_random_obstacle(percent = 100):
 	print("RAND ",rnd,">",percent)
 	if(rnd>percent): return null
 	rnd = randi()%100
-	if(rnd<50): return preload("res://levelObjects/natural_objects/Column_A.tscn").instance()
+	if(rnd<33): return preload("res://levelObjects/natural_objects/Wall_A.tscn").instance()
+	elif(rnd<66): return preload("res://levelObjects/natural_objects/Column_A.tscn").instance()
 	else: return preload("res://levelObjects/natural_objects/Column_B.tscn").instance()
