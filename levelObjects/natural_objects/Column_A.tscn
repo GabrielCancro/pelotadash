@@ -5,7 +5,8 @@
 [node name="Column_A" type="Node2D"]
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-position = Vector2( 84, -88 )
+position = Vector2( 66, -88 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="Sprite4" type="Sprite" parent="KinematicBody2D"]
 position = Vector2( -83, -142 )

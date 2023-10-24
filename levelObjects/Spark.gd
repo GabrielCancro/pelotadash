@@ -5,20 +5,25 @@ var speed = 0
 var getted = false
 var dist_to_player
 var light_timer = 0
+var ttl = 0
+onready var rnd_move = Vector2(randf(),randf())
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	z_index = -1
 
 func _process(delta):
+	ttl += delta
 	dist_to_player = global_position.distance_to(GC.PLAYER.global_position)
 	if light_timer<.1: light_timer += delta
 	else:
 		light_timer = 0
-		scale.x = rand_range(.3,.6)
-		scale.y = rand_range(.4,.8)
-		modulate.a = rand_range(.6,.8)
+		scale.x = rand_range(.5,.6)
+		scale.y = rand_range(.5,.6)
+		modulate.a = rand_range(.7,.9)
 	if !getted:
+		position.x += sin(ttl)*rnd_move.x
+		position.y += sin(ttl)*rnd_move.y
 		if dist_to_player<200: 
 			getted = true
 			GC.SCORE += score
