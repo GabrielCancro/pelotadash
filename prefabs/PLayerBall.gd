@@ -9,7 +9,6 @@ var fordwardCollisionCooldown = 0
 onready var initial_position = position
 var force_position = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	GC.PLAYER = self
 	visible = true
@@ -33,7 +32,6 @@ func check_horizontal_move(delta):
 		if Input.is_action_pressed("right") && position.x<GC.GAME_SIZE.x*0.75: set_axis_velocity(Vector2(movePower,0))
 		elif Input.is_action_pressed("left"): set_axis_velocity(Vector2(-movePower*1.5,0))
 	set_axis_velocity( linear_velocity*0.98)
-	
 
 func check_jump(delta):
 	if(jumpCooldown>0): jumpCooldown -= delta
