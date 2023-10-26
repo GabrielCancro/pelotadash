@@ -51,11 +51,8 @@ func add_platform():
 	return platform
 
 func get_random_platform():
-	var val = randi()%100
-	if val<20: return preload("res://levelObjects/natural_objects/Platform_M.tscn").instance()
-	elif val<40: return preload("res://levelObjects/natural_objects/Platform_L.tscn").instance()
-	elif val<90: return preload("res://levelObjects/natural_objects/Platform_S.tscn").instance()
-	elif val<100: return preload("res://levelObjects/natural_objects/Platform_XS.tscn").instance()
+	var index = randi()%DG.BLOCK_DATA[DG.PLAYER_DATA.current_biome]["platforms"].size()
+	return DG.BLOCK_DATA[DG.PLAYER_DATA.current_biome]["platforms"][index].instance()
 
 func create_start_platforms():
 	for i in range(2):
@@ -92,10 +89,5 @@ func set_obstacles_in_platform(platform):
 		if obs: pt.add_child(obs)
 
 func get_random_obstacle(percent = 100):
-	var rnd = randi()%100
-	print("RAND ",rnd,">",percent)
-	if(rnd>percent): return null
-	rnd = randi()%100
-	if(rnd<33): return preload("res://levelObjects/natural_objects/Wall_A.tscn").instance()
-	elif(rnd<66): return preload("res://levelObjects/natural_objects/Column_A.tscn").instance()
-	else: return preload("res://levelObjects/natural_objects/Column_B.tscn").instance()
+	var index = randi()%DG.BLOCK_DATA[DG.PLAYER_DATA.current_biome]["obstacles"].size()
+	return DG.BLOCK_DATA[DG.PLAYER_DATA.current_biome]["obstacles"][index].instance()

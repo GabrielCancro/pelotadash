@@ -13,13 +13,13 @@ radius = 18.1108
 [sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 1, 1, 1, 0.34902, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=14]
 gradient = SubResource( 8 )
 
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0.0133588, 0.131425 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
+[sub_resource type="CurveTexture" id=15]
 curve = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=10]
@@ -27,8 +27,8 @@ flag_disable_z = true
 gravity = Vector3( -1000, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 15 )
+color_ramp = SubResource( 14 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "idle"

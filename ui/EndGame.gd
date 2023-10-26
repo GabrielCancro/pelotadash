@@ -2,7 +2,6 @@ extends Control
 
 var isWin = false
 var dec_sparks = 0
-var current_sparks = 0
 var sparks_adding_amount = 0
 signal end_animation
 
@@ -18,9 +17,8 @@ func _ready():
 	$Buttons/btn_retry.connect("button_down",self,"on_click_button",["retry"])
 
 func _process(delta):
-	current_sparks = myLerp(current_sparks,DG.PLAYER_DATA.sparks)
 	$lb_score.text = str(floor(GC.SCORE))
-	
+
 	if addingFontSize:
 		if score_font.size < 100: score_font.size += (120-score_font.size)*0.05
 		else: 
@@ -39,12 +37,14 @@ func _process(delta):
 
 func show_end_panel(win):
 	addingFontSize = true
+	$lb_sparks.rect_position.x = -500
 	visible = true
 	isWin = win
+	if win: DG.PLAYER_DATA.level += 1
 	yield(self,"end_animation")
 	if !win && GC.SCORE>1:
 		var dec_spark = floor(GC.SCORE/2)
-		$lb_line.text = "YOU LOSE!  -"+str(dec_spark)
+		$lb_line.text = "YOU LOSE!\n-"+str(dec_spark)
 		$Tween.interpolate_property($lb_line,"modulate",Color(1,1,1,0),Color(1,1,1,1),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 		$Tween.start()
 		yield(get_tree().create_timer(1),"timeout")
@@ -56,8 +56,15 @@ func show_end_panel(win):
 		
 	$Buttons.visible = true
 	$Tween.interpolate_property($Buttons,"modulate",Color(1,1,1,0),Color(1,1,1,1),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.interpolate_property($lb_sparks,"rect_position",$lb_sparks.rect_position,$lb_sparks.rect_position+Vector2(520,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	DG.PLAYER_DATA.sparks += int(GC.SCORE)
+	DG.save_data()
+	$lb_sparks.text = "SPARKS "+str(DG.PLAYER_DATA.sparks)
 	$Tween.start()
-
+	
+	yield(get_tree().create_timer(2.5),"timeout")
+	$Tween.interpolate_property($lb_sparks,"rect_position",$lb_sparks.rect_position,$lb_sparks.rect_position+Vector2(-520,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
 
 func on_click_button(code):
 	if code=="retry":

@@ -2,17 +2,31 @@ extends Node
 
 var BLOCK_DATA = {
 	"natural":{
-		"b1":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
-		"b2":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
-		"b3":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
-		"b4":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
-		"b5":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
-		"b6":{ "getted":false, "scene":preload("res://blocks/natural/blk_natural_001.tscn")},
+		"platforms":[
+			preload("res://levelObjects/natural_objects/Platform_XS.tscn"),
+			preload("res://levelObjects/natural_objects/Platform_S.tscn"),
+			preload("res://levelObjects/natural_objects/Platform_M.tscn"),
+			preload("res://levelObjects/natural_objects/Platform_L.tscn"),
+		],
+		"obstacles":[
+			preload("res://levelObjects/natural_objects/Column_A.tscn"),
+			preload("res://levelObjects/natural_objects/Column_B.tscn"),
+			preload("res://levelObjects/natural_objects/Wall_A.tscn"),
+		],
+	},
+	"test":{
+		"platforms":[
+			preload("res://levelObjects/natural_objects/Platform_XS.tscn")
+		],
+		"obstacles":[
+			preload("res://levelObjects/natural_objects/Wall_A.tscn"),
+		],
 	},
 }
 
 var PLAYER_DATA = {
 	"sparks":2500, 
+	"level":1,
 	"current_skin":"sk1", 
 	"current_music":"ms1", 
 	"current_biome":"natural",
@@ -21,10 +35,10 @@ var PLAYER_DATA = {
 
 var PACK_DATA = {
 	"biomes":{
-		"bpack1":{"biome":"natural","img":"b_natural", "price":0, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
+		"bpack1":{"biome":"city","img":"b_city", "price":0, "req_pack":0, "req_power":"", "blocks":["b1","b2","b3"]},
 		"bpack2":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b4"]},
-		"bpack3":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b5"]},
-		"bpack4":{"biome":"natural","img":"b_natural", "price":1200, "req_pack":0, "req_power":"", "blocks":["b6"]},
+		"bpack3":{"biome":"frozen","img":"b_frozen", "price":1200, "req_pack":0, "req_power":"", "blocks":["b5"]},
+		"bpack4":{"biome":"magma","img":"b_magma", "price":1200, "req_pack":0, "req_power":"", "blocks":["b6"]},
 	},
 	"powers":{
 		"ppack1":{"name":"Super Jump","img":"p_super_jump","desc":"Jump higher holding SPACE" ,"price":1000},
@@ -57,11 +71,12 @@ func get_available_block_scenes_list():
 	return array
 
 func init_getted_blocks_from_packs():
-	for key in PACK_DATA.biomes:
-		if PLAYER_DATA.packs_getted.has(key):
-			var pack = PACK_DATA.biomes[key]
-			for b in pack.blocks:
-				BLOCK_DATA[pack.biome][b].getted = true
+	pass
+#	for key in PACK_DATA.biomes:
+#		if PLAYER_DATA.packs_getted.has(key):
+#			var pack = PACK_DATA.biomes[key]
+#			for b in pack.blocks:
+#				BLOCK_DATA[pack.biome][b].getted = true
 
 func save_data():
 	var file = File.new()

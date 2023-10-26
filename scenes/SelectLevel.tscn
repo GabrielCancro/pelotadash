@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://font/df_normal.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/biome_natural/biome_city.jpg" type="Texture" id=2]
+[ext_resource path="res://ui/CustomButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/UI_Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levelObjects/natural_objects/Platform_M.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/SelectLevel.gd" type="Script" id=6]
+
+[node name="SelectLevel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="lb_level" type="Label" parent="."]
+margin_left = 38.0
+margin_top = 36.0
+margin_right = 343.0
+margin_bottom = 108.0
+custom_fonts/font = ExtResource( 1 )
+text = "LEVEL 8"
+valign = 1
+
+[node name="btn_biome" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 175.0
+margin_top = -219.0
+margin_right = 481.0
+margin_bottom = -154.0
+text = "Natural Biome"
+
+[node name="btn_skin" parent="." instance=ExtResource( 3 )]
+margin_left = 939.0
+margin_top = 210.0
+margin_right = 1159.0
+margin_bottom = 275.0
+text = "Natural Skin"
+
+[node name="btn_song" parent="." instance=ExtResource( 3 )]
+margin_left = 873.0
+margin_top = 353.0
+margin_right = 1142.0
+margin_bottom = 418.0
+text = "The Jungle Song"
+
+[node name="btn_start" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 43.5
+margin_top = 117.0
+margin_right = 180.5
+margin_bottom = 203.0
+text = "GO!"
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="UI_Player" parent="." instance=ExtResource( 4 )]
+
+[node name="plat Natural Mediana" parent="." instance=ExtResource( 5 )]
+position = Vector2( 71, 463 )
+
+[node name="UI_Player2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 248, 446 )
