@@ -52,7 +52,10 @@ var PACK_DATA = {
 }
 
 var IMAGES = {
+	"b_city":preload("res://assets/packs/biome_natural.jpg"),
 	"b_natural":preload("res://assets/packs/biome_natural.jpg"),
+	"b_frozen":preload("res://assets/packs/biome_natural.jpg"),
+	"b_magma":preload("res://assets/packs/biome_natural.jpg"),
 	"p_super_jump":preload("res://assets/packs/power_super_jump.jpg"),
 	"s_pokebomb":preload("res://assets/packs/skin_pokebomb.jpg"),
 	"m_jungle_relax":preload("res://assets/packs/music_jungle_relax.jpg"),

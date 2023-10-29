@@ -8,7 +8,7 @@
 script = ExtResource( 2 )
 
 [node name="Sizer" type="Control" parent="."]
-margin_right = 990.0
+margin_right = 1922.0
 margin_bottom = 91.0
 
 [node name="Platform" parent="." instance=ExtResource( 1 )]

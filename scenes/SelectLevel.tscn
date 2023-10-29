@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://font/df_normal.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/biome_natural/biome_city.jpg" type="Texture" id=2]
@@ -6,10 +6,18 @@
 [ext_resource path="res://ui/UI_Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levelObjects/natural_objects/Platform_M.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/SelectLevel.gd" type="Script" id=6]
+[ext_resource path="res://font/Rowdy-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 67
+outline_size = 4
+outline_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+font_data = ExtResource( 7 )
 
 [node name="SelectLevel" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -537, -165 )
 script = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -21,10 +29,10 @@ expand = true
 stretch_mode = 2
 
 [node name="lb_level" type="Label" parent="."]
-margin_left = 38.0
-margin_top = 36.0
-margin_right = 343.0
-margin_bottom = 108.0
+margin_left = 122.0
+margin_top = 28.0
+margin_right = 427.0
+margin_bottom = 100.0
 custom_fonts/font = ExtResource( 1 )
 text = "LEVEL 8"
 valign = 1
@@ -64,6 +72,27 @@ margin_top = 117.0
 margin_right = 180.5
 margin_bottom = 203.0
 text = "GO!"
+
+[node name="btn_back" parent="." instance=ExtResource( 3 )]
+margin_left = 29.0
+margin_top = 32.0
+margin_right = 99.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 70, 0 )
+text = ""
+
+[node name="lb_title" type="Label" parent="btn_back"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_top = -15.0
+margin_right = 2.0
+margin_bottom = 7.0
+custom_colors/font_color = Color( 0.976471, 0.976471, 0.976471, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "<"
+align = 1
+valign = 1
 
 [node name="Tween" type="Tween" parent="."]
 

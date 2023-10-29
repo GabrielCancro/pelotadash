@@ -1,19 +1,21 @@
 extends Node2D
 
-export var speed = 250
+var speed = 250
 var max_speed = 360
 var elapsed_distance = 0
-var total_distance = 5500 + 2000
+var total_distance = 4500 + 2000
 var end_generation = false
 var next_platform = 0
 
 var last_block_instanced
 var next_spark = 1000
 
-var max_jump_horizontal_distance = 200 #320
+var max_jump_horizontal_distance = 100 #320
 var min_jump_horizontal_distance = 100
 var height_level = 0
 var max_jump_height = 1
+var obstacles_percent = 20
+var spark_distance = 200
 
 func _ready():
 	randomize()
@@ -41,7 +43,7 @@ func check_new_platform():
 
 func add_platform():
 	var platform = get_random_platform()
-	platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2
+	platform.position.x = 2000
 	platform.position.y = GC.GAME_SIZE.y-height_level * 100
 	add_child(platform)
 	last_block_instanced = platform
@@ -65,7 +67,7 @@ func create_start_platforms():
 func check_new_spark():
 	if end_generation: return
 	if elapsed_distance+1000 >= next_spark:
-		next_spark += 100
+		next_spark += spark_distance
 		var spark = preload("res://levelObjects/Spark.tscn").instance()
 		last_block_instanced.add_child(spark)
 		spark.global_position.x = 2000
@@ -76,7 +78,7 @@ func check_end_platform():
 	if elapsed_distance+2000 >= total_distance:
 		end_generation = true
 		var platform = preload("res://blocks/endBlock.tscn").instance()
-		platform.position.x = 2000 + platform.get_node("Sizer").rect_size.x/2
+		platform.position.x = 2000
 		platform.position.y = GC.GAME_SIZE.y-height_level * 100
 		add_child(platform)
 		last_block_instanced = platform
@@ -85,8 +87,9 @@ func set_obstacles_in_platform(platform):
 	var points = platform.get_node_or_null("ObstaclePoints")
 	if !points: return
 	for pt in points.get_children():
-		var obs = get_random_obstacle(30)
-		if obs: pt.add_child(obs)
+		if randi()%100<obstacles_percent:
+			var obs = get_random_obstacle(30)
+			if obs: pt.add_child(obs)
 
 func get_random_obstacle(percent = 100):
 	var index = randi()%DG.BLOCK_DATA[DG.PLAYER_DATA.current_biome]["obstacles"].size()

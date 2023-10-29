@@ -4,6 +4,8 @@ var isWin = false
 var dec_sparks = 0
 var sparks_adding_amount = 0
 signal end_animation
+signal end_float_text_animation
+
 
 onready var score_font = $lb_score.get_font("font", "Label")
 var addingFontSize = false
@@ -30,7 +32,8 @@ func _process(delta):
 		var step = sparks_adding_amount * 0.1
 		GC.SCORE += step
 		sparks_adding_amount -= step
-		if(abs(step)<0.01): 
+		if(abs(step)<0.05):
+			GC.SCORE += sign(step)
 			sparks_adding_amount = 0
 			yield(get_tree().create_timer(.5),"timeout")
 			emit_signal("end_animation")
@@ -42,19 +45,18 @@ func show_end_panel(win):
 	isWin = win
 	if win: DG.PLAYER_DATA.level += 1
 	yield(self,"end_animation")
-	if !win && GC.SCORE>1:
-		var dec_spark = floor(GC.SCORE/2)
-		$lb_line.text = "YOU LOSE!\n-"+str(dec_spark)
-		$Tween.interpolate_property($lb_line,"modulate",Color(1,1,1,0),Color(1,1,1,1),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-		$Tween.start()
-		yield(get_tree().create_timer(1),"timeout")
-		sparks_adding_amount = -dec_spark
-		yield(self,"end_animation")
-		$Tween.interpolate_property($lb_line,"modulate",Color(1,1,1,1),Color(1,1,1,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-		$Tween.start()
-		yield(get_tree().create_timer(.6),"timeout")
+	
+	if win: 
+		show_float_text("EXCELENT!\n+",Color(1,1,0,1),floor(GC.SCORE*.15))
+		yield(self,"end_float_text_animation")
+		show_float_text("ADVANCED TO LEVEL "+str(DG.PLAYER_DATA.level),Color(1,1,0,1),0)
+		yield(self,"end_float_text_animation")
+	else:
+		show_float_text("YOU LOSE!\n",Color(1,0,0,1),-floor(GC.SCORE*.5))
+		yield(self,"end_float_text_animation")
 		
 	$Buttons.visible = true
+	$Buttons/btn_retry.visible = !win
 	$Tween.interpolate_property($Buttons,"modulate",Color(1,1,1,0),Color(1,1,1,1),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.interpolate_property($lb_sparks,"rect_position",$lb_sparks.rect_position,$lb_sparks.rect_position+Vector2(520,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	DG.PLAYER_DATA.sparks += int(GC.SCORE)
@@ -65,6 +67,22 @@ func show_end_panel(win):
 	yield(get_tree().create_timer(2.5),"timeout")
 	$Tween.interpolate_property($lb_sparks,"rect_position",$lb_sparks.rect_position,$lb_sparks.rect_position+Vector2(-520,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.start()
+
+func show_float_text(text,color,sparks=0):
+	var add_spark = sparks
+	$lb_line.add_color_override("font_color",color);
+	if sparks!=0: $lb_line.text = text+str(add_spark)
+	else: $lb_line.text = text
+	$Tween.interpolate_property($lb_line,"modulate",Color(1,1,1,0),Color(1,1,1,1),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield(get_tree().create_timer(1),"timeout")
+	if sparks!=0:
+		sparks_adding_amount = add_spark
+		yield(self,"end_animation")
+	$Tween.interpolate_property($lb_line,"modulate",Color(1,1,1,1),Color(1,1,1,0),.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield(get_tree().create_timer(.6),"timeout")
+	emit_signal("end_float_text_animation")
 
 func on_click_button(code):
 	if code=="retry":
